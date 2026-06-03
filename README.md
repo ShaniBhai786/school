@@ -1,6 +1,6 @@
 # 🎓 School Management System
 
-Welcome to **School**, a modern web application built with Next.js to simplify school management and improve communication between administrators, teachers, students, and parents.
+Welcome to **School.unisoftpvt.com**, a modern web application built with Next.js to simplify school management and improve communication between administrators, teachers, students, and parents.
 
 ## 📖 About the Project
 

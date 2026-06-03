@@ -1,0 +1,762 @@
+@import url("https://fonts.googleapis.com/css2?family=Bpmf+Huninn&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Bpmf Huninn", Times, serif;
+  color: #ffffff;
+}
+body {
+  background: linear-gradient(135deg,
+      #020617 0%,
+      #0f172a 50%,
+      #111827 100%);
+  color: #ffffff;
+  min-height: 100vh;
+}
+/* =======================NavBar============================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 12, 20, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.login-btn {
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.admission-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0b0f1a;
+  background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.25);
+  transition: 0.3s ease;
+}
+
+.admission-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 45px rgba(167, 139, 250, 0.35);
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .navbar-container {
+    padding: 1rem;
+  }
+}
+
+
+/* ===============================Footer================================ */
+.footer {
+  background: rgba(10, 12, 20, 0.6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 4rem 5% 2rem;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-logo span {
+  background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-text {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #38bdf8;
+  transform: translateX(4px);
+}
+
+.footer-contact p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+}
+
+
+
+/* ======================Home Page============================== */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 5rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ffffff;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.primary {
+  background: linear-gradient(135deg, #38bdf8, #a78bfa);
+  color: #0b0f1a;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+}
+
+.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.card h3 {
+  color: #ffffff;
+}
+
+.card p {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+
+/* ===========================Dashboard Page============================== */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b1220, #05070f);
+  color: #e2e8f0;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.logo span {
+  background: linear-gradient(135deg, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar button:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card p {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+.panel {
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.fee-box {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.fee-box button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #38bdf8, #a78bfa);
+  cursor: pointer;
+  color: #0b0f1a;
+  font-weight: 600;
+}
+
+.usersHeader{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+}
+.usersHeader button {
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #38bdf8, #a78bfa);
+  color: #0b0f1a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+}
+
+.usersHeader button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(167, 139, 250, 0.3);
+}
+
+.usersHeader button:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+}
+
+
+/* _____________________FEE Submission_____________________- */
+.fee-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #16a34a, #0e33ac);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 10px;
+}
+
+.fee-body {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 95%;
+  /* background: #0f172a; */
+  background: linear-gradient(135deg, #020617, #0e1321);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0px 20px rgba(16, 9, 9, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.fee-body:hover {
+  transform: translateY(-5px);
+}
+
+.fee-header h1 {
+  text-align: center;
+  color: #0b0b0f;
+  margin-bottom: 30px;
+  font-weight: 900;
+  margin-top: 1px;
+  top: 15px;
+  position: relative;
+}
+
+.fees-inputs {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.fee-input {
+  position: relative;
+  width: 240px;
+}
+
+.fee-field {
+  width: 100%;
+  padding: 14px 12px;
+  background: transparent;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.3s;
+  box-shadow: inset 1px 0px 5px rgb(12, 116, 145);
+}
+
+.fee-field:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.fee-label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 13px;
+  pointer-events: none;
+  transition: 0.3s;
+  padding: 0 5px;
+}
+
+.fee-field:focus+.fee-label,
+.fee-field:not(:placeholder-shown)+.fee-label {
+  top: -8px;
+  font-size: 11px;
+  color: #38bdf8;
+}
+
+.error {
+  color: #f87171;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.fee-btns-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.fee-btns-div button {
+  width: 40%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.fee-btns-div button[type="submit"] {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.fee-btns-div button[type="submit"]:hover {
+  background: #0ea5e9;
+  transform: translateY(-5px);
+  color: white;
+}
+
+.fee-btns-div button[type="reset"] {
+  background: #ef4444;
+  border: 1px solid #334155;
+  color: black;
+}
+
+.fee-btns-div button[type="reset"]:hover {
+  border-color: #ff4d4d;
+  transform: translateY(-5px);
+  color: #cbd5f5;
+}
+
+
+/* _____________________________Enrollment Form___________________________ */
+.enroll-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.enroll-card {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  margin-top: 2%;
+  background: #020617;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0px 0px 10px #0ea5e9;
+  transition: all 0.3s ease-in-out;
+}
+
+.enroll-card:hover {
+  transform: translateY(10px);
+  box-shadow: 0 0px 30px #0ea5e9;
+}
+
+.enroll-card h1 {
+  text-align: center;
+  color: #38bdf8;
+  margin-bottom: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.input-group-enroll {
+  position: relative;
+}
+
+.input-enroll,
+.input-enroll-select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+  background: transparent;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+  box-shadow: inset 0px 0px 1px #0ea5e9;
+}
+
+.input-enroll:focus,
+.input-enroll-select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.input-enroll-select option {
+  background-color: #0e1321;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.preview-image {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 5%;
+  border-radius: 1px;
+  top: 10%;
+}
+
+.input-group-enroll label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 13px;
+  pointer-events: none;
+  transition: 0.3s;
+  background: #020617;
+  padding: 0 5px;
+}
+
+.input-enroll:focus+label,
+.input-enroll:not(:placeholder-shown)+label {
+  top: -8px;
+  font-size: 11px;
+  color: #38bdf8;
+}
+
+.error {
+  color: #f87171;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #38bdf8;
+  color: #020617;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #0ea5e9;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
