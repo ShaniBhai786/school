@@ -818,6 +818,8 @@ table td {
   background: #f6f8fc;
   color: #172033;
   font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 
@@ -930,15 +932,13 @@ table td {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 0.8fr;
   align-items: center;
-
   min-height: 85px;
   padding: 15px 25px;
-
   border-bottom: 1px solid #f0f2f6;
-
   transition:
     background 0.2s ease,
     transform 0.2s ease;
+    cursor: pointer;
 }
 
 .student-row:last-child {
@@ -1265,3 +1265,149 @@ table td {
   }
 }
 
+
+
+
+/* ================================
+   OVERVIEW DASHBOARD
+================================ */
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 35px;
+  background: #0b0f19;
+  color: #f8fafc;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ================================
+   PAGE TITLE
+================================ */
+
+.container h2 {
+  margin: 0 0 8px;
+
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -0.6px;
+
+  color: #f8fafc;
+}
+
+.container h2::after {
+  content: "";
+
+  display: block;
+
+  width: 45px;
+  height: 3px;
+
+  margin-top: 12px;
+
+  background: #6366f1;
+  border-radius: 10px;
+}
+
+
+/* ================================
+   STATS GRID
+================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ================================
+   STUDENT STAT CARD
+================================ */
+
+.container p {
+  position: relative;
+
+  width: 280px;
+
+  margin-top: 30px;
+  padding: 28px;
+
+  background: #111827;
+
+  border: 1px solid #1f2937;
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.25);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #9ca3af;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ================================
+   HOVER EFFECT
+================================ */
+
+.container p:hover {
+  transform: translateY(-5px);
+
+  border-color: #3730a3;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ================================
+   TOTAL NUMBER
+================================ */
+
+.container p::first-line {
+  color: #9ca3af;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 25px 18px;
+  }
+
+  .container h2 {
+    font-size: 25px;
+  }
+
+  .container p {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .container {
+    padding: 20px 14px;
+  }
+
+  .container h2 {
+    font-size: 23px;
+  }
+
+  .container p {
+    padding: 22px;
+  }
+}
