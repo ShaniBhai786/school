@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "../../lib/db";
-// import { Student } from "../../modals/users/Students";
+import { Student } from "../../models/users/Students";
 import cloudinary from "../../lib/cloudinary";
 
 export async function POST(req) {
@@ -19,11 +19,13 @@ export async function POST(req) {
     const group = formData.get("group");
     const address = formData.get("address");
     const avatar = formData.get("avatar");
+    const fee = formData.get("fee");
 
     if (
       !fullName ||
       !studentId ||
       !studentClass ||
+      !fee ||
       !contact ||
       !Bform ||
       !religion ||
@@ -63,6 +65,7 @@ export async function POST(req) {
       group,
       address,
       avatar: uploadedImage.secure_url,
+      fee: parseFloat(fee),
     });
 
     return NextResponse.json(

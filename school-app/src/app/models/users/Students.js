@@ -6,6 +6,11 @@ const studentSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    fatherName: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     studentId: {
         type: String,
         required: true,
@@ -16,12 +21,22 @@ const studentSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    fee: {
+        type: Number,
+        required: true,
+        trim: true,
+    },
     contact: {
         type: String,
         required: true,
         trim: true,
     },
     Bform: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    CNIC: {
         type: String,
         required: true,
         trim: true,

@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from "yup"
+import StudentFetcher from './StudentFetcher'
 
 const Page = () => {
     const feeFields = [
@@ -72,6 +73,12 @@ const Page = () => {
             id: "total",
             label: "Total"
         },
+        {
+            type: "number",
+            name: "payment",
+            id: "payment",
+            label: "Payment"
+        },
     ]
     const initialValues = {
         name: "",
@@ -83,6 +90,7 @@ const Page = () => {
         testfee: 0,
         others: 0,
         total: 0,
+        payment: 0,
         month: new Date().toLocaleString("default", { month: "long" }),
         date: new Date().toISOString().split("T")[0]
     }
@@ -115,13 +123,35 @@ const Page = () => {
             .typeError("Others must be a number")
             .min(0, "Cannot be negative"),
 
+        payment: Yup.number()
+            .typeError("Payment must be a number")
+            .min(0, "Cannot be negative"),
+
     });
 
-    const onSubmit = (values, { resetForm }) => {
-        alert("Fee Submitted")
-        console.table(values)
-        resetForm()
-    }
+    const onSubmit = async (values, { resetForm }) => {
+        try {
+            const res = await fetch("/api/fees", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert("Fee Submitted");
+                resetForm();
+            } else {
+                alert(data.message);
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <>
             <div className="fee-container">
@@ -133,11 +163,34 @@ const Page = () => {
                         {
                             ({ values, setFieldValue }) => {
                                 useEffect(() => {
-                                    const calculated = Number(values.fee || 0) + Number(values.pending || 0) + Number(values.testfee || 0) + Number(values.others || 0) - Number(values.balance || 0);
-                                    setFieldValue("total", calculated)
-                                }, [values, setFieldValue])
+                                    const total =
+                                        Number(values.fee || 0) +
+                                        Number(values.pending || 0) +
+                                        Number(values.testfee || 0) +
+                                        Number(values.others || 0);
+
+                                    setFieldValue("total", total);
+
+                                    const payment = Number(values.payment || 0);
+                                    // setFieldValue("payment", total + values.pending);
+
+                                    if (payment >= total) {
+                                        setFieldValue("pending", 0);
+                                        setFieldValue("balance", payment - total);
+                                    } else {
+                                        setFieldValue("pending", total - payment);
+                                        setFieldValue("balance", 0);
+                                    }
+                                }, [
+                                    values.fee,
+                                    values.testfee,
+                                    values.others,
+                                    values.payment,
+                                    setFieldValue,
+                                ]);
                                 return (
                                     <Form autoComplete='off'>
+                                        <StudentFetcher />
                                         <div className="fees-inputs">
                                             {feeFields.map((value, index) => {
                                                 return (

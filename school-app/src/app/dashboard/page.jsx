@@ -9,7 +9,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <aside className="sidebar">
-        <h2 className="logo"><span>Admin</span> Panel</h2>
+        <h2 className="admin-logo"><span>Admin</span> Panel</h2>
 
         <button onClick={() => setActiveTab("overview")}>Overview</button>
         <button onClick={() => setActiveTab("users")}>Users</button>
@@ -49,21 +49,25 @@ export default function Dashboard() {
               <button className="addUserBtn" onClick={() => setActiveTab("enrollment")}>+ Add User</button>
             </div>
             <table>
-              <tr>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Status</th>
-              </tr>
-              <tr>
-                <td>Ali Khan</td>
-                <td>Student</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <td>Sarah Ahmed</td>
-                <td>Teacher</td>
-                <td>Active</td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ali Khan</td>
+                  <td>Student</td>
+                  <td>Active</td>
+                </tr>
+                <tr>
+                  <td>Sarah Ahmed</td>
+                  <td>Teacher</td>
+                  <td>Active</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         )}

@@ -9,10 +9,13 @@ const Enrollment = () => {
     const [students, setStudents] = useState([])
     const initialValues = {
         fullName: "",
+        fatherName: "",
         studentId: "",
         class: "",
+        fee: "",
         contact: "",
         Bform: "",
+        CNIC: "",
         group: "",
         religion: "",
         address: "",
@@ -21,10 +24,13 @@ const Enrollment = () => {
 
     const validationSchema = Yup.object({
         fullName: Yup.string().required("Required"),
+        fatherName: Yup.string().required("Required"),
         studentId: Yup.string().required("Required"),
         class: Yup.string().required("Required"),
+        fee: Yup.string().required("Required"),
         contact: Yup.string().required("Required"),
         Bform: Yup.string().required("Required"),
+        CNIC: Yup.string().required("Required"),
         group: Yup.string().required("Required"),
         religion: Yup.string().required("Required"),
         address: Yup.string().required("Required"),
@@ -36,10 +42,13 @@ const Enrollment = () => {
             const formData = new FormData();
 
             formData.append("fullName", values.fullName);
+            formData.append("fatherName", values.fatherName);
             formData.append("studentId", values.studentId);
             formData.append("class", values.class);
+            formData.append("fee", values.fee);
             formData.append("contact", values.contact);
             formData.append("Bform", values.Bform);
+            formData.append("CNIC", values.CNIC);
             formData.append("religion", values.religion);
             formData.append("group", values.group);
             formData.append("address", values.address);
@@ -93,8 +102,10 @@ const Enrollment = () => {
 
                                 {[
                                     { name: "fullName", label: "Full Name", type: "text" },
+                                    { name: "fatherName", label: "Father's Name", type: "text" },
                                     { name: "studentId", label: "Student ID", type: "text" },
                                     { name: "class", label: "Class", type: "text" },
+                                    { name: "fee", label: "Monthly Fee", type: "text", id: "fee" },
                                     { name: "address", label: "Address", type: "text" },
                                 ].map((field, i) => (
                                     <div className="input-group-enroll" key={i}>
@@ -122,6 +133,21 @@ const Enrollment = () => {
                                         setFieldValue("Bform", value)
                                     }} />
                                     <label>B-Form</label>
+                                    <ErrorMessage name="Bform" component="div" className="error" />
+                                </div>
+
+                                <div className="input-group-enroll">
+                                    <input type="text" name="CNIC" className="input-enroll" value={values.CNIC} placeholder=" " onChange={(e) => {
+                                        let value = e.target.value.replace(/\D/g, "")
+
+                                        if (value.length > 5 && value.length <= 12) {
+                                            value = `${value.slice(0, 5)}-${value.slice(5, 12)}`
+                                        } else if (value.length > 12) {
+                                            value = `${value.slice(0, 5)}-${value.slice(5, 12)}-${value.slice(12, 13)}`
+                                        }
+                                        setFieldValue("CNIC", value)
+                                    }} />
+                                    <label>Father's CNIC</label>
                                     <ErrorMessage name="Bform" component="div" className="error" />
                                 </div>
 
