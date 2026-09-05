@@ -2,6 +2,8 @@
 import { useState } from "react";
 import FeeSubmission from "../components/FeeSubmission"
 import Enrollment from "../components/Enrollment";
+import Users from "../components/Users";
+import Overview from "../components/Overview";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -19,27 +21,7 @@ export default function Dashboard() {
 
       <main className="content">
         {activeTab === "overview" && (
-          <div className="grid">
-            <div className="card">
-              <h3>Total Students</h3>
-              <p>1,240</p>
-            </div>
-
-            <div className="card">
-              <h3>Total Teachers</h3>
-              <p>85</p>
-            </div>
-
-            <div className="card">
-              <h3>Pending Fees</h3>
-              <p>Rs. 320,000</p>
-            </div>
-
-            <div className="card">
-              <h3>Paid Fees</h3>
-              <p>Rs. 1,120,000</p>
-            </div>
-          </div>
+          <Overview />
         )}
 
         {activeTab === "users" && (
@@ -48,27 +30,7 @@ export default function Dashboard() {
               <h2>Users</h2>
               <button className="addUserBtn" onClick={() => setActiveTab("enrollment")}>+ Add User</button>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Ali Khan</td>
-                  <td>Student</td>
-                  <td>Active</td>
-                </tr>
-                <tr>
-                  <td>Sarah Ahmed</td>
-                  <td>Teacher</td>
-                  <td>Active</td>
-                </tr>
-              </tbody>
-            </table>
+            <Users />
           </div>
         )}
 

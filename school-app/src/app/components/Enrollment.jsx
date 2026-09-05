@@ -6,7 +6,6 @@ import * as Yup from "yup"
 import axios from "axios"
 
 const Enrollment = () => {
-    const [students, setStudents] = useState([])
     const initialValues = {
         fullName: "",
         fatherName: "",
@@ -80,14 +79,6 @@ const Enrollment = () => {
         }
     };
 
-    const fetchStudents = async () => {
-        try {
-            const res = await axios.get("/api/fetchstudents");
-            setStudents(res.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
     return (
         <div className="enroll-container">
             <div className="enroll-card">
@@ -202,16 +193,6 @@ const Enrollment = () => {
                 </Formik>
 
             </div>
-            <button onClick={fetchStudents}>Get All Data</button>
-            {students.map((student) => (
-                <div key={student._id}>
-                    <h3>{student.fullName}</h3>
-                    <p>{student.studentId}</p>
-                    <p>{student.class}</p>
-                    <p>{student.contact}</p>
-                    <img src={student.avatar} alt="image" width={121} />
-                </div>
-            ))}
         </div>
     )
 }

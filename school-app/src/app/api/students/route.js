@@ -3,18 +3,46 @@ import { connectDB } from "../../lib/db";
 import { Student } from "../../models/users/Students";
 import cloudinary from "../../lib/cloudinary";
 
+// GET ALL STUDENTS
+export async function GET() {
+  try {
+    await connectDB();
+
+    const students = await Student.find({}).sort({ createdAt: -1 });
+
+    return NextResponse.json({
+      success: true,
+      students,
+    });
+
+  } catch (error) {
+    console.error("GET STUDENTS ERROR:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: error.message,
+      },
+      { status: 500 }
+    );
+  }
+}
+
+
+// POST NEW STUDENT
 export async function POST(req) {
   try {
-
     await connectDB();
 
     const formData = await req.formData();
 
     const fullName = formData.get("fullName");
+    const fatherName = formData.get("fatherName");
     const studentId = formData.get("studentId");
     const studentClass = formData.get("class");
     const contact = formData.get("contact");
     const Bform = formData.get("Bform");
+    const CNIC = formData.get("CNIC");
     const religion = formData.get("religion");
     const group = formData.get("group");
     const address = formData.get("address");
@@ -23,11 +51,13 @@ export async function POST(req) {
 
     if (
       !fullName ||
+      !fatherName ||
       !studentId ||
       !studentClass ||
       !fee ||
       !contact ||
       !Bform ||
+      !CNIC ||
       !religion ||
       !group ||
       !address ||
@@ -46,10 +76,12 @@ export async function POST(req) {
     const bytes = await avatar.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // CONVERT BUFFER TO BASE64
-    const base64Image = `data:${avatar.type};base64,${buffer.toString("base64")}`;
+    // BASE64
+    const base64Image = `data:${avatar.type};base64,${buffer.toString(
+      "base64"
+    )}`;
 
-    // UPLOAD TO CLOUDINARY
+    // CLOUDINARY
     const uploadedImage = await cloudinary.uploader.upload(base64Image, {
       folder: "students",
     });
@@ -57,10 +89,12 @@ export async function POST(req) {
     // SAVE STUDENT
     const student = await Student.create({
       fullName,
+      fatherName,   // 👈 required
       studentId,
       class: studentClass,
       contact,
       Bform,
+      CNIC,         // 👈 required
       religion,
       group,
       address,
@@ -78,8 +112,7 @@ export async function POST(req) {
     );
 
   } catch (error) {
-
-    console.log("CLOUDINARY ERROR:", error);
+    console.error("STUDENT CREATE ERROR:", error);
 
     return NextResponse.json(
       {
