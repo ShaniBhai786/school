@@ -89,12 +89,12 @@ export async function POST(req) {
     // SAVE STUDENT
     const student = await Student.create({
       fullName,
-      fatherName,   // 👈 required
+      fatherName,  
       studentId,
       class: studentClass,
       contact,
       Bform,
-      CNIC,         // 👈 required
+      CNIC,        
       religion,
       group,
       address,
